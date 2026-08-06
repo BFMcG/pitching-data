@@ -1,1 +1,1 @@
-# pitching-data-2025
+# pitching-data
