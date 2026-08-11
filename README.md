@@ -4,6 +4,7 @@ The purpose of this project is to create a clean, accessible dataset of statisti
 
 
 ## pitch-data-2025
+The data for the 2025 regular season was collected through Baseball Savant but was collected using three different methods (greater detail under Baseball Webscrape 2025). The 2025 data was a one-time pipeline, since all of that year's data was already available. The data was collected once, and the pipeline was run once.
 
 
 ### Baseball Webscrape 2025
