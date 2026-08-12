@@ -13,7 +13,7 @@ import contextlib
 
 # pybaseball==2.2.7
 
-lookup_date = "2025-09-20"
+lookup_date = "2025-03-27"
 
 while lookup_date <= "2025-09-28":
 

@@ -8,45 +8,10 @@ from io import StringIO
 import os
 import contextlib
 
-lookup_date = "2026-07-26"
+lookup_date = "2026-03-25"
 
 while lookup_date <= "2026-07-29":
     print('Fetching data for:', lookup_date)
-    # Get request for all the pitchers that played on a sepecifc date
-    url = "https://baseballsavant.mlb.com/statcast_search"
-
-    # url parameters for all pitchers that pitched on lookup_date
-    params_all_players = {
-        "hfGT": "R|",
-        "hfSea": "2026|",
-        "player_type": "pitcher",
-        "game_date_gt": lookup_date,
-        "game_date_lt": lookup_date,
-        "group_by": "name",
-        "min_pitches": 0,
-        "min_results": 0,
-        "min_pas": 0,
-        "sort_col": "pitches",
-        "sort_order": "desc"
-    }
-
-    headers = {
-        "User-Agent": "Mozilla/5.0",
-        "X-Requested-With": "XMLHttpRequest"
-    }
-
-    response = requests.get(url, params=params_all_players, headers=headers)
-    player_soup = BeautifulSoup(response.text, "html.parser")
-
-
-    player_names = [
-        {"player_name": name, "player_id": pid}
-        for row in player_soup.find_all("tr", class_="search_row")
-        if (pid := row.get("data-player-id")) and (name := row.get("data-player-name"))
-    ]
-
-    print('Players recorded')
-    print("Starting pitch fetch")
 
     ### Fetching Daily data
 
