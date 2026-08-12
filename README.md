@@ -8,10 +8,10 @@ pitching 2026:
 
 
 ## pitch-data-2025
-The data for the 2025 regular season was collected through Baseball Savant but was collected using three different methods (greater detail under Baseball Webscrape 2025). The 2025 data was a one-time pipeline, since all of that year's data was already available. The data was collected all at once, and the pipeline was run once.
+The data for the 2025 regular season was collected through Baseball Savant and was collected using three different methods (greater detail under Baseball Webscrape 2025). The 2025 data was a one-time pipeline, since all of that year's data was already available. The data was collected all at once, and the pipeline was run once.
 
-<img src="images/Pipeline Job 2025.png" width="400">
-<img src="images/Pipeline Run 2025.png" width="400">
+<img src="images/Pipeline Job 2025.png" width="600">
+<img src="images/Pipeline Run 2025.png" width="600">
 
 
 ### Baseball Webscrape 2025
@@ -28,19 +28,21 @@ Web scraping steps:
      
   3) **Attack Zone**
 
-     This data is collected using the same process, except instead of collecting the data one player at a time, it's collected one attack zone at a time. This allows for a new column that indicates which attack zone the pitch was thrown in. The data is also reads a CSV, eliminating the need for the player dictionary list.
+     This data is collected using the same process, except instead of collecting the data one player at a time, it's collected one attack zone at a time. This allows for a new column that indicates which attack zone the pitch was thrown in. The data is also read from a CSV endpoint, eliminating the need for the player dictionary list.
      
   4) **Pybaseball**
      
-     Pybaseball is a Python wrapper that can collect individual pitching data. It's collected using the same method as total pitching, except the players are iterated through the stat_cast() function using the specified date and the pitcher's ID.
+     Pybaseball is a Python wrapper that can collect individual pitching data from Baseball Savant. It's collected using the same method as total pitching, except the players are iterated through the stat_cast() function using the specified date and the pitcher's ID.
      
   5) **Testing and Appending**
+     
      The final step checks whether the same number of pitches were collected across the three methods of data collection. If false, an error is raised. If true,  then the data from each of the methods are converted to a Pyspark dataframe and are appended to their respective tables in the bronze schema.
 
 ### Silver Notebook
-The silver layer focuses on doing the heavy cleaning involved with each data table. The cleaning process includes filtering out all of the unnecessary columns, locating and addressing null values, and changing column types. Additionally, the Total Pitching table, since it was scraped using the HTML method needs additional cleaning including parcing data into seperate columns, extracting and deleting data from columns, and renaming columns and row values using dictionary maps.
+The silver layer focuses on doing the heavy cleaning involved with each data table. The cleaning process includes filtering out all of the unnecessary columns, locating and addressing null values, and changing column types. Additionally, the Total Pitching table, since it was scraped by reading HTML, needs additional cleaning. This includes parsing data into separate columns, extracting and deleting data from columns, and renaming columns and row values using dictionary maps. These transformations are appended to the silver schema in their respective tables.
 
 ### Gold Notebook
+The gold layer's responsibility is to merge and format for easy public access. The three tables are merged into one final table using multiple columns as keys. Once merged, the table is filtered and ordered for the final step, formatting. The table is split into months for easier CSV download (more convenient for storage or if someone requires only one month), and a player_identification dimension table is created with player_id as the foreign key.
 
 ## pitch-data-2026
 ### Baseball Webscrape 2026e
