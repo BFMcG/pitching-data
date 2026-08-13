@@ -10,7 +10,7 @@ import contextlib
 
 lookup_date = "2026-03-25"
 
-while lookup_date <= "2026-07-29":
+while lookup_date <= "2026-07-31":
     print('Fetching data for:', lookup_date)
 
     ### Fetching Daily data
