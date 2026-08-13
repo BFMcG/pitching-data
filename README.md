@@ -10,8 +10,8 @@ pitching 2026:
 ## pitch-data-2025
 The data for the 2025 regular season was collected through Baseball Savant using three different methods (greater detail under Baseball Webscrape 2025). The 2025 data was a one-time pipeline, since all of that year's data was already available. The data was collected all at once, and the pipeline was run once.
 
-<img src="images/Pipeline Job 2025.png" width="600">
-<img src="images/Pipeline Run 2025.png" width="600">
+<img src="images/Pipeline Job 2025.png" width="700">
+<img src="images/Pipeline Run 2025.png" width="700">
 
 
 ### Baseball Webscrape 2025
@@ -45,9 +45,19 @@ The silver layer focuses on doing the heavy cleaning involved with each data tab
 The gold layer's responsibility is to merge and format for easy public access. The three tables are merged into one final table using multiple columns as keys. Once merged, the table is filtered and ordered for the final step, formatting. The table is split into months for easier CSV download (more convenient for storage or if someone requires only one month), and a player_identification dimension table is created with player_id as the foreign key. These tables are then written to the gold schema where they can be extracted.
 
 ## pitch-data-2026
-The 2026 data was also collected from the Baseball Savant website. However, since the 2026 season is still being played, the data collection is on a fixed schedule when the data is made available on Baseball Savant. Furthermore, since the data needs to be collected on a daily basis, the collection is as precise as possible, so only one method was used since all of the information can still be gathered using just that resource.
+The 2026 data was also collected from the Baseball Savant website. However, since the 2026 season is still being played, the data collection is on a fixed schedule, updating when the data is made available on Baseball Savant. Furthermore, since the data needs to be collected on a daily basis, the collection process was made more efficient to reduce run time and potential cost. This led to only one method being used since all necessary information could still be gathered from that resource. Furthermore, the data pipeline is being run on a daily schedule until the end of the regular season, which is at the end of September. 
+
+<img src="images/Pipeline Job 2026.png" width="700">
+<img src="images/Pipeline Run 2026.png" width="700">
 
 ### Baseball Webscrape 2026
+This project started in the middle of the MLB season, so the purpose of this web scraper was to fetch all the pitching data until the end of July. Only steps 2. and 5. from the 2025 Webscrape were used for this collection, resulting in only one table being appended to the bronze schema.
+
 ### Bronze Notebook (Daily)
+This notebook uses the same logic as the web scrape, except it isn't under a while loop and runs on a daily basis.
+
 ### Silver Notebook
+This silver layer uses a similar process to the 2025 silver notebook, except Spark SQL is used in some cases. Instances of SQL usage include filtering columns and creating the total_pitch_count column.
+
 ### Gold Notebook
+This gold layer replicates the same steps as the 2025 gold notebook, but doesn't require merging tables. It also uses Spark SQL logic, creating the player_identification table.
