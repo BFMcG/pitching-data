@@ -42,6 +42,11 @@ while lookup_date <= "2026-07-31":
             "wbc": "false"
         }
 
+        headers = {
+        "User-Agent": "Mozilla/5.0",
+        "X-Requested-With": "XMLHttpRequest"
+        }
+
         response = requests.get(url_csv, params=params_az, headers=headers, timeout=25)
         time.sleep(random.uniform(9.84, 15.67)) 
 
