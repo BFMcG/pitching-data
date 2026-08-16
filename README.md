@@ -4,7 +4,7 @@ The purpose of this project is to create a clean, accessible dataset of statisti
 
 pitching 2025: https://www.kaggle.com/datasets/brendanmcguinness/every-mlb-pitch-2025
 
-pitching 2026:
+pitching 2026: https://www.kaggle.com/datasets/brendanmcguinness/every-mlb-pitch-2026
 
 
 ## pitch-data-2025
