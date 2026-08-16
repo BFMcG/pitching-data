@@ -1,6 +1,6 @@
 # pitching-data
 
-The purpose of this project is to create a clean, accessible dataset of statistics for individual pitches thrown throughout an MLB season, made available for public use. This is accomplished through an ETL pipeline built on the Databricks platform, which collects/scrapes the data, cleans and transforms it, and finally formats it for public consumption. The resulting dataset has been published on Kaggle, where the files are available for CSV download.
+The purpose of this project is to create a clean, accessible dataset of individual pitch statistics from the 2025 and 2026 MLB seasons, made available for public use. This is accomplished through an ETL pipeline built on the Databricks platform, which collects/scrapes the data, cleans and transforms it, and finally formats it for public consumption. The resulting dataset has been published on Kaggle, where the files are available for CSV download.
 
 pitching 2025: https://www.kaggle.com/datasets/brendanmcguinness/every-mlb-pitch-2025
 
