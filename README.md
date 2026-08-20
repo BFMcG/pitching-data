@@ -1,6 +1,6 @@
 # pitching-data
 
-The purpose of this project is to create a clean, accessible dataset of individual pitch statistics from the 2025 and 2026 MLB seasons, made available for public use. This is accomplished through an ETL pipeline built on the Databricks platform, which collects/scrapes the data, cleans and transforms it, and finally formats it for public consumption. The resulting dataset has been published on Kaggle, where the files are available for CSV download.
+The purpose of this project is to create a clean, accessible dataset of individual pitch statistics from the 2025 and 2026 MLB seasons, made available for public use. This is accomplished through an ETL pipeline built on the Databricks platform. The pipeline follows a Bronze, Silver, and Gold schema workflow where the Bronze layer collects/scrapes the data, the Silver layer cleans and transforms the data, and finally the Gold layer formats the data for public consumption. The resulting dataset has been published on Kaggle, where the files are available for download as CSV files.
 
 Pitching data table 2025: https://www.kaggle.com/datasets/brendanmcguinness/every-mlb-pitch-2025
 
@@ -8,7 +8,7 @@ Pitching data table 2026: https://www.kaggle.com/datasets/brendanmcguinness/ever
 
 
 ## pitch-data-2025
-The data for the 2025 regular season was collected through Baseball Savant using three different methods (greater detail under Baseball Webscrape 2025). The 2025 data was a one-time pipeline, since all of that year's data was already available. The data was collected all at once, and the pipeline was run once.
+The data for the 2025 regular season was collected through Baseball Savant using three different methods (greater detail under Baseball Webscrape 2025). Deliberately used three distinct methods to demonstrate proficiency in requesting data from multiple sources and merging them using identical columns as keys. The 2025 data was a one-time pipeline, since all of that year's data was already available. The data was collected all at once, and the pipeline was run once.
 
 <img src="images/Pipeline Job 2025.png" width="700">
 <img src="images/Pipeline Run 2025.png" width="700">
@@ -45,7 +45,7 @@ The silver layer focuses on doing the heavy cleaning involved with each data tab
 The gold layer's responsibility is to merge and format for easy public access. The three tables are merged into one final table using multiple columns as keys. Once merged, the table is filtered and ordered for the final step, formatting. The table is split into months for easier CSV download (more convenient for storage or if someone requires only one month), and a player_identification dimension table is created with player_id as the foreign key. These tables are then written to the gold schema where they can be extracted.
 
 ## pitch-data-2026
-The 2026 data was also collected from the Baseball Savant website. However, since the 2026 season is still being played, the data collection is on a fixed schedule, updating when the data is made available on Baseball Savant. Furthermore, since the data needs to be collected on a daily basis, the collection process was made more efficient to reduce run time and potential cost. This led to only one method being used since all necessary information could still be gathered from that resource. Furthermore, the data pipeline is being run on a daily schedule until the end of the regular season, which is at the end of September. 
+The 2026 data was also collected from the Baseball Savant website. However, since the 2026 season is still being played, the data collection is on a fixed schedule, updating when the data is made available on Baseball Savant. Furthermore, since the data needs to be collected on a daily basis, the collection process was made more efficient to reduce run time and potential cost. This led to only one method being used since all necessary information could still be gathered from that resource. The data pipeline is being run on a daily schedule until the end of the regular season, which is at the end of September. 
 
 <img src="images/Pipeline Job 2026.png" width="700">
 <img src="images/Pipeline Run 2026.png" width="700">
