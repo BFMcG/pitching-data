@@ -1,4 +1,4 @@
-# MLB-Pitch-by-Pitch-DataBase
+# MLB-Pitch-by-Pitch-Database
 
 The purpose of this project is to create a clean, accessible dataset of individual pitch statistics from the 2025 and 2026 MLB seasons, made available for public use. This is accomplished through an ETL pipeline built on the Databricks platform. The pipeline follows a Bronze, Silver, and Gold schema workflow where the Bronze layer collects/scrapes the data, the Silver layer cleans and transforms the data, and finally the Gold layer formats the data for public consumption. The resulting dataset has been published on Kaggle, where the files are available for download as CSV files.
 
